@@ -8,11 +8,16 @@ const App = () => {
   const [searchInput, setSearchInput] = useState("");
 
   const getData = async () => {
-    await axios
-      .get(`https://api.publicapis.org/categories`)
-      .then((response) => {
-        setData(response.data.categories);
-      });
+    try {
+      await axios
+        .get(`https://api.publicapis.org/categories`)
+        .then((response) => {
+          setData(response.data.categories);
+        });
+    } catch (e) {
+      console.error(e.message);
+      throw e;
+    }
   };
 
   useEffect(() => {
