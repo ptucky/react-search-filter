@@ -16,7 +16,7 @@ const App = () => {
         });
     } catch (e) {
       console.error(e.message);
-      throw e;
+      throw new Error(e.message);
     }
   };
 
